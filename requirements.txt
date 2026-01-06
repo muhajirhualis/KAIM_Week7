@@ -4,3 +4,16 @@ matplotlib
 seaborn
 scikit-learn
 tqdm
+nltk
+langchain
+langchain-text-splitters
+langchain-community
+langchain-huggingface
+sentence-transformers
+chromadb
+langchain-chroma
+torch
+torchvision
+torchaudio
+
+
