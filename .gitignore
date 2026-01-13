@@ -1,3 +1,5 @@
 data/
 __pycache__/
-vector_store/
+vector_store/chroma_db/*
+vector_store/chroma_db
+
