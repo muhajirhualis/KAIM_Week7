@@ -8,7 +8,8 @@ from langchain_text_splitters import RecursiveCharacterTextSplitter
 from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
-
+ 
+ 
 class VectorStoreManager:
     def __init__(self, model_name="sentence-transformers/all-MiniLM-L6-v2"):
         """
