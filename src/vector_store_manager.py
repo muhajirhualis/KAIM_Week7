@@ -54,7 +54,6 @@ class VectorStoreManager:
                 "Product": row['Product'],
                 "Complaint ID": int(row['Complaint ID'])
             }
-            
             doc = Document(
                 page_content=row['cleaned_narrative'], 
                 metadata=metadata
