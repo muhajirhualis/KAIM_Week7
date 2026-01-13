@@ -9,7 +9,7 @@ from langchain_huggingface import HuggingFaceEmbeddings
 from langchain_chroma import Chroma
 from langchain_core.documents import Document
  
- 
+
 class VectorStoreManager:
     def __init__(self, model_name="sentence-transformers/all-MiniLM-L6-v2"):
         """
@@ -54,6 +54,7 @@ class VectorStoreManager:
                 "Product": row['Product'],
                 "Complaint ID": int(row['Complaint ID'])
             }
+            
             doc = Document(
                 page_content=row['cleaned_narrative'], 
                 metadata=metadata
