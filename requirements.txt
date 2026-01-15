@@ -10,10 +10,16 @@ langchain-text-splitters
 langchain-community
 langchain-huggingface
 sentence-transformers
+langchain-core
 chromadb
 langchain-chroma
 torch
 torchvision
 torchaudio
 
+pyarrow
+requests
+
+faiss-cpu
+transformers
 
