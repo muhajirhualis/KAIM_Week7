@@ -143,46 +143,28 @@ Result: **~14,200 chunks** from 12,000 complaints
 
 ---
 
-## 🔜 3. Next Steps & Key Focus Areas
+# Intelligent Complaint Analysis for Financial Services
 
-### ➤ Task 3: RAG Pipeline & Evaluation (Due: 13 Jan)
-| Component | Plan |
-|---------|------|
-| **Retriever** | Load pre-built `complaint_embeddings.parquet` → use `all-MiniLM-L6-v2` to embed queries → ChromaDB `query()` with `n_results=5` |
-| **Prompt Engineering** | Use structured template:<br>```You are a financial analyst for CrediTrust. Answer using ONLY the context below. If unclear, say “I don’t have enough info.”\nContext: {chunks}\nQuestion: {query}\nAnswer:``` |
-| **Generator** | Hugging Face `pipeline` + `mistralai/Mistral-7B-Instruct-v0.2` (quantized for local inference) |
-| **Evaluation** | Test 8 questions (e.g., *“What are common savings account issues?”*), score 1–5 on accuracy, relevance, traceability |
+This project implements a Retrieval-Augmented Generation (RAG) system to answer questions about customer complaints using semantic search and a language model.
 
-### ➤ Task 4: Gradio UI
-- Input: Text box + “Ask” button  
-- Output:  
-  - ✅ AI-generated answer  
-  - ✅ Expandable “Evidence” section showing top 2 source chunks + complaint IDs  
-  - ✅ Optional streaming for long answers  
+## Task 3: RAG Core Logic and Evaluation
 
-### ⚠️ Key Risks & Mitigations
-- **LLM Hallucination**: Mitigated by strict prompt + sourcing requirement  
-- **Product Bias**: Will verify retriever fairness across categories in evaluation  
-- **Latency**: Will benchmark embedding + generation time; consider ONNX quantization if >3s/query  
+This task focuses on building the core RAG pipeline using a pre-built vector store and evaluating its effectiveness.
 
----
+### Key Components
 
-## 📌 Conclusion
+- **Vector Store**: Pre-built FAISS index containing embeddings for 464K+ filtered complaints.
+- **Retriever**: Uses `all-MiniLM-L6-v2` to find top-k relevant chunks.
+- **LLM**: `google/flan-t5-small` for generating answers.
+- **Prompt**: Instructs the LLM to use only the provided context.
+- **Evaluation**: Systematic scoring of 10 representative questions.
 
-Tasks 1 & 2 lay a robust foundation:  
-✅ **532K clean, product-filtered complaints**  
-✅ **12K stratified sample with proportional representation**  
-✅ **14K semantically coherent chunks**  
-✅ **ChromaDB vector store with full traceability**  
+### Setup
 
-We’ve prioritized **real-world feasibility** (no over-cleaning, strict product alignment) and **auditability** (metadata, reproducible sampling). Next, we’ll build the RAG engine to close the loop — transforming data into decisions.
+1. Install dependencies: `pip install -r requirements.txt`
+2. Ensure the pre-built vector store is in `vector_store/faiss/`.
+3. Run the evaluation notebook or script.
 
----
+### Evaluation Results
 
-### 📎 Appendix
-- **Code**: [`notebooks/task1_eda_preprocessing.ipynb`](../notebooks/task1_eda_preprocessing.ipynb), [`notebooks/task2_chunking_embedding.ipynb`](../notebooks/task2_chunking_embedding.ipynb)  
-- **Data**: [`data/processed/filtered_complaints.csv`](../data/processed/filtered_complaints.csv)  
-- **Vector Store**: [`vector_store/chroma_db/`](../vector_store/chroma_db/)  
-
----
-
+See `evaluation_report.md` for detailed scoring and analysis.

@@ -2,3 +2,37 @@ data/
 __pycache__/
 
 vector_store/
+
+
+# Virtual environments
+venv/
+ENV/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Data
+data/raw/
+data/processed/
+vector_store/.lock
+vector_store/*.index
+vector_store/*.bin
+
+# Models
+models/hf/*
+
+# IDE
+.vscode/
+.idea/
+
+# Logs and outputs
+logs/
+output/
+*.log
+
+# Environment variables
+.env
+
+# OS generated files
+.DS_Store
+Thumbs.db
