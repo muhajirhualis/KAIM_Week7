@@ -164,12 +164,12 @@ This task focuses on building the core RAG pipeline using a pre-built vector sto
 
 Screenshots:
 
-[Chat Interface](screenshots/chat_interface.png) 
+![Chat Interface](screenshots/chat_interface.png) 
 
 
 *Figure 1: The developed interactive chat interface, built using Gradio, serves as a bridge between the complex RAG (Retrieval-Augmented Generation) backend and non-technical end-users. It allows financial analysts at CrediTrust to query a database of over 1.3 million customer complaints using natural language.*
 
-[Chat Sample](screenshots/chat_sample.png) 
+![Chat Sample](screenshots/chat_sample.png) 
 *Figure 2: A sample interaction with the chat interface, demonstrating the system's ability to retrieve relevant information from the vector store and generate accurate responses.*
 
 
