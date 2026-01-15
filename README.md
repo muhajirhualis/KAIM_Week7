@@ -100,8 +100,7 @@ We began with the full CFPB complaint dataset (~9.6M rows) and executed rigorous
 | **Text Cleaning** | Applied domain-aware normalization:<br>• Lowercasing<br>• Removal of boilerplate (`"I am writing to file a complaint..."`)<br>• Anonymized date masking (`XX/XX/XXXX`)<br>• Special character stripping (kept legal terms: *FCRA, FDCPA, Metro 2*) | Preserved semantic integrity while reducing noise for embedding |
 | **Narrative Length** | Analyzed word count distribution (cleaned) | **Median: 62 words**, **95th pct: 213 words**, **Max: 6,469 words**<br>→ Confirmed need for chunking (long legal narratives skew embedding quality) |
 
-![Product Distribution (Filtered)](notebooks/final_product_dist.png)  
-*Figure 1: Final complaint distribution after filtering — proportional to real-world prevalence.*
+
 
 > 💡 **Note on BNPL**: While the challenge lists *five* products (including *Buy Now - Pay Later*), our EDA found **zero** complaints explicitly labeled “BNPL” in the CFPB dataset. We searched `Sub-product` for *“Earned wage access”* (24 records), but upon inspection, these were debt-collection disputes—not product-specific BNPL complaints. We opted for **strict alignment with labeled categories** to ensure data integrity.
 
@@ -138,8 +137,7 @@ Result: **~14,200 chunks** from 12,000 complaints
   → Stores embeddings + full metadata (`Complaint ID`, `Product`, `chunk_index`, `total_chunks`) for traceability.
 - **Persistence**: Saved to `vector_store/chroma_db/` — ready for Task 3 retrieval.
 
-![Chunk Distribution](notebooks/chunk_wordcount.png)  
-*Figure 2: Chunk length distribution (chars) — 500-char target achieved with natural variability.*
+
 
 ---
 
@@ -166,11 +164,12 @@ This task focuses on building the core RAG pipeline using a pre-built vector sto
 
 Screenshots:
 
-![Chat Interface](screenshots/chat_interface.png) 
+[Chat Interface](screenshots/chat_interface.png) 
 
 
 *Figure 1: The developed interactive chat interface, built using Gradio, serves as a bridge between the complex RAG (Retrieval-Augmented Generation) backend and non-technical end-users. It allows financial analysts at CrediTrust to query a database of over 1.3 million customer complaints using natural language.*
-![Chat Sample](screenshots/chat_sample.png) 
+
+[Chat Sample](screenshots/chat_sample.png) 
 *Figure 2: A sample interaction with the chat interface, demonstrating the system's ability to retrieve relevant information from the vector store and generate accurate responses.*
 
 
