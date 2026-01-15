@@ -143,15 +143,11 @@ Result: **~14,200 chunks** from 12,000 complaints
 
 ---
 
-# Intelligent Complaint Analysis for Financial Services
-
-This project implements a Retrieval-Augmented Generation (RAG) system to answer questions about customer complaints using semantic search and a language model.
-
-## Task 3: RAG Core Logic and Evaluation
+### Task 3: RAG Core Logic and Evaluation
 
 This task focuses on building the core RAG pipeline using a pre-built vector store and evaluating its effectiveness.
 
-### Key Components
+#### Key Components
 
 - **Vector Store**: Pre-built FAISS index containing embeddings for 464K+ filtered complaints.
 - **Retriever**: Uses `all-MiniLM-L6-v2` to find top-k relevant chunks.
@@ -159,12 +155,33 @@ This task focuses on building the core RAG pipeline using a pre-built vector sto
 - **Prompt**: Instructs the LLM to use only the provided context.
 - **Evaluation**: Systematic scoring of 10 representative questions.
 
-### Setup
+#### Setup
 
 1. Install dependencies: `pip install -r requirements.txt`
 2. Ensure the pre-built vector store is in `vector_store/faiss/`.
 3. Run the evaluation notebook or script.
 
-### Evaluation Results
 
-See `evaluation_report.md` for detailed scoring and analysis.
+### Task 4: Interactive RAG Interface
+
+Screenshots:
+
+![Chat Interface](screenshots/chat_interface.png) 
+
+
+*Figure 1: The developed interactive chat interface, built using Gradio, serves as a bridge between the complex RAG (Retrieval-Augmented Generation) backend and non-technical end-users. It allows financial analysts at CrediTrust to query a database of over 1.3 million customer complaints using natural language.*
+![Chat Sample](screenshots/chat_sample.png) 
+*Figure 2: A sample interaction with the chat interface, demonstrating the system's ability to retrieve relevant information from the vector store and generate accurate responses.*
+
+
+**Overview:** The developed interactive chat interface, built using Gradio, serves as a bridge between the complex RAG (Retrieval-Augmented Generation) backend and non-technical end-users. It allows financial analysts at CrediTrust to query a database of over 1.3 million customer complaints using natural language.
+
+#### Core Features & Functionality:
+
+- **Intuitive UI:** A clean ChatInterface layout that simplifies the query process with a single text input and clear conversation history.
+
+- **Trust Through Transparency:** Below every AI-generated response, the application dynamically displays the Source Metadata (Complaint IDs) and text snippets retrieved from the vector store. This allows users to cross-verify the AI's claims against the original data.
+
+- **Optimized Performance:** To ensure reliability across environments, the system utilizes a local LLM (FLAN-T5) or a Serverless Mistral API, eliminating the need for complex local GPU setups while maintaining high response accuracy.
+
+- **Real-time Streaming:** Implemented token-by-token response streaming, which significantly improves perceived latency and provides a more modern, interactive user experience.
